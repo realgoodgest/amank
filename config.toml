@@ -1,0 +1,16 @@
+project_id = "autoorder-secure-starter"
+
+[api]
+enabled = true
+schemas = ["public", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+max_rows = 500
+
+[auth]
+enabled = true
+site_url = "https://YOUR-PRODUCTION-DOMAIN.example"
+additional_redirect_urls = ["http://localhost:5173", "https://YOUR-PRODUCTION-DOMAIN.example"]
+# Configure email SMTP and redirect URLs in Supabase Dashboard before launch.
+
+[functions.join-store]
+verify_jwt = true
