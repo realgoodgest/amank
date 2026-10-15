@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="color-scheme" content="light">
+  <title>AutoOrder</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="topbar"><div class="brand"><span class="brand-mark">A</span><span>AutoOrder</span></div><div id="session-label" class="muted small">Belum masuk</div></header>
+  <main class="layout">
+    <section id="auth-panel" class="panel auth-panel">
+      <p class="eyebrow">AKUN PELANGGAN</p><h1>Masuk atau daftar</h1>
+      <p class="muted">Gunakan email pribadi yang dapat Anda akses. Kami tidak pernah meminta kata sandi lewat chat.</p>
+      <form id="auth-form" autocomplete="on">
+        <label for="email">Email</label><input id="email" type="email" autocomplete="email" maxlength="254" required>
+        <label for="password">Kata sandi</label><input id="password" type="password" autocomplete="current-password" minlength="10" maxlength="128" required>
+        <label for="display-name">Nama tampilan <span class="muted">(khusus daftar)</span></label><input id="display-name" type="text" autocomplete="name" maxlength="120">
+        <div class="button-row"><button id="login-button" type="submit">Masuk</button><button id="signup-button" type="button" class="secondary">Daftar</button></div>
+      </form>
+      <p class="small muted">Aktifkan verifikasi email, proteksi kata sandi bocor, CAPTCHA/rate limits, dan SMTP produksi di Supabase sebelum peluncuran.</p>
+    </section>
+
+    <section id="app-panel" class="hidden">
+      <div class="welcome-row"><div><p class="eyebrow">TOKO</p><h1>Katalog & pesanan</h1><p id="role-note" class="muted small"></p></div><button id="logout-button" class="secondary">Keluar</button></div>
+      <div id="notice" class="notice hidden" role="status" aria-live="polite"></div>
+      <section id="product-manager" class="panel hidden">
+        <div class="section-heading"><div><p class="eyebrow">PANEL SELLER</p><h2>Kelola produk</h2></div><button id="reset-product-form" type="button" class="secondary compact">Produk baru</button></div>
+        <p class="muted small">Produk disimpan di database Supabase. Perubahan langsung tampil di katalog tanpa mengedit atau mengunggah ulang file HTML.</p>
+        <form id="product-form" class="product-form">
+          <input id="product-id" type="hidden">
+          <label for="product-name">Nama produk</label><input id="product-name" maxlength="180" required>
+          <label for="product-description">Deskripsi</label><textarea id="product-description" maxlength="4000" rows="3"></textarea>
+          <label for="product-price">Harga (Rupiah)</label><input id="product-price" type="number" min="0" max="100000000000" step="1" inputmode="numeric" required>
+          <label class="check-label"><input id="product-active" type="checkbox" checked> Produk aktif dan terlihat oleh buyer</label>
+          <div class="button-row"><button id="save-product" type="submit">Simpan produk</button><button id="cancel-product-edit" type="button" class="secondary">Batal</button></div>
+        </form>
+        <div class="section-heading managed-heading"><h2>Daftar produk</h2><button id="refresh-managed-products" type="button" class="secondary compact">Muat ulang</button></div>
+        <div id="managed-products"><p class="muted">Memuat produk…</p></div>
+      </section>
+      <section class="panel"><div class="section-heading"><h2>Produk tersedia</h2><button id="refresh-products" class="secondary compact">Muat ulang</button></div><div id="products" class="products"><p class="muted">Memuat katalog…</p></div></section>
+      <section class="panel"><div class="section-heading"><h2>Riwayat pesanan</h2><button id="refresh-orders" class="secondary compact">Muat ulang</button></div><div id="orders"><p class="muted">Memuat pesanan…</p></div></section>
+      <section class="panel privacy"><h2>Privasi akun</h2><p class="muted">Jangan kirim kata sandi, OTP, data kartu, atau dokumen identitas melalui catatan pesanan. Jangan unggah dokumen sensitif sampai alur unggah dan pemindaian file dirancang serta diuji.</p></section>
+    </section>
+  </main>
+  <footer>AutoOrder • Gunakan hanya melalui domain resmi dengan HTTPS.</footer>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
